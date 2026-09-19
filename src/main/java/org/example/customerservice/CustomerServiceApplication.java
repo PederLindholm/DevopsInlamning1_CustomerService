@@ -16,18 +16,23 @@ public class CustomerServiceApplication {
         SpringApplication.run(CustomerServiceApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner demo(CustomerRepository customerRepo){
-        return (args) -> {
-            CustomerEntity c1 = new CustomerEntity("Peder Lindholm","peder@gmail.com","0123456789");
-            CustomerEntity c2 = new CustomerEntity("Farah Sleiman","farah@gmail.com","0987654321");
-            CustomerEntity c3 = new CustomerEntity("Mai Do","mai@gmail.com","0456123789");
-
-            customerRepo.save(c1);
-            customerRepo.save(c2);
-            customerRepo.save(c3);
-
-        };
-    }
+//    @Bean
+//    public CommandLineRunner demo(CustomerRepository customerRepo){
+//        return (args) -> {
+//
+//            if (customerRepo.count() > 0) {
+//                return;
+//            }
+//
+//            CustomerEntity c1 = new CustomerEntity("Peder Lindholm","peder@gmail.com","0123456789");
+//            CustomerEntity c2 = new CustomerEntity("Farah Sleiman","farah@gmail.com","0987654321");
+//            CustomerEntity c3 = new CustomerEntity("Mai Do","mai@gmail.com","0456123789");
+//
+//            customerRepo.save(c1);
+//            customerRepo.save(c2);
+//            customerRepo.save(c3);
+//
+//        };
+//    }
 
 }
