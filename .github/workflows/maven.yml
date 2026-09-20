@@ -35,17 +35,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-#      - name: Wait for MySQL to be truly ready
-#        run: |
-#          for i in {1..30}; do
-#            mysql -h 127.0.0.1 -P 3308 -ubackend1 -p12345 customers -e "SELECT 1" && break
-#            echo "Waiting for MySQL (backend1 access)..."
-#            sleep 2
-#          done
-#      - name: Check backend1 grants and existing tables
-#        run: |
-#          mysql -h 127.0.0.1 -P 3308 -ubackend1 -p12345 customers -e "SHOW GRANTS FOR CURRENT_USER();"
-#          mysql -h 127.0.0.1 -P 3308 -ubackend1 -p12345 customers -e "SHOW TABLES;"
       - name: Build with Maven
         run: mvn -B package
         env:
