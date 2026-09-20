@@ -26,7 +26,7 @@ public class IntegrationTest {
     @Test
     void createAndFetchUser(){
         CustomerEntity customer = new CustomerEntity();
-        customer.setName("Yahya");
+        customer.setName("Mai");
 
         customerRepository.save(customer);
 
@@ -34,7 +34,7 @@ public class IntegrationTest {
 
 
         assertEquals(1, customers.size());
-        assertEquals("Yahya", customers.get(0).getName());
+        assertEquals("Mai", customers.get(0).getName());
     }
 
 }

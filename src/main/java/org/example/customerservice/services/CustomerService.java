@@ -1,6 +1,5 @@
 package org.example.customerservice.services;
 
-import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
 import org.example.customerservice.dto.CustomerDTO;
 import org.example.customerservice.entity.CustomerEntity;
 import org.example.customerservice.repositories.CustomerRepository;
