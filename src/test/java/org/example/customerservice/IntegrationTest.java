@@ -1,39 +1,40 @@
 package org.example.customerservice;
 
-import org.example.customerservice.dto.CustomerDTO;
 import org.example.customerservice.entity.CustomerEntity;
 import org.example.customerservice.repositories.CustomerRepository;
-import org.example.customerservice.services.CustomerService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
-import java.util.Optional;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ActiveProfiles("test")
-@ExtendWith(MockitoExtension.class)
 @SpringBootTest
 public class IntegrationTest {
 
-    @Mock
-    private CustomerRepository mockCustomerRepository;
+    @Autowired
+    CustomerRepository customerRepository;
 
-    @InjectMocks
-    private CustomerService customerService;
+
+    @BeforeEach
+    void setUp() {
+        customerRepository.deleteAll();
+    }
 
     @Test
-    void findCustomerById(){
-        CustomerEntity customerEntity = new CustomerEntity();
-        when(mockCustomerRepository.findById(1L)).thenReturn(Optional.of(customerEntity));
-        CustomerDTO result = customerService.getCustomerById(1L);
-        assertNotNull(result);
+    void createAndFetchUser(){
+        CustomerEntity customer = new CustomerEntity();
+        customer.setName("Mai");
+
+        customerRepository.save(customer);
+
+        List<CustomerEntity> customers = customerRepository.findAll();
+
+
+        assertEquals(1, customers.size());
+        assertEquals("Mai", customers.get(0).getName());
     }
 
 }
