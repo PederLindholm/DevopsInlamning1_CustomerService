@@ -30,7 +30,7 @@ public class CustomerService {
 
     public CustomerDTO getCustomerById(Long id) {
         return toDto(customerRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Kunden hittades inte")));
+                .orElseThrow(() -> new IllegalArgumentException("Kunderna hittades inte")));
     }
 
     public boolean deleteCustomer(Long id) {
